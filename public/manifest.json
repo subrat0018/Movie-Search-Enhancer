@@ -1,0 +1,30 @@
+{
+  "name": "Movie Search Enhancer",
+  "version": "0.1.0",
+  "description": "Enhance searching of movies",
+  "permissions": ["storage", "cookies", "tabs", "activeTab"],
+  "host_permissions": ["https://*.google.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.google.com/*"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "logo192.png",
+      "24": "logo192.png",
+      "32": "logo192.png"
+    },
+    "default_title": "Movie Search Enhancer",
+    "default_popup": "index.html"
+  },
+  "manifest_version": 3,
+  "icons":{
+    "48": "logo192.png",
+    "128": "logo192.png"
+  }
+}
