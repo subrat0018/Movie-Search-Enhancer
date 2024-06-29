@@ -12,8 +12,8 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
           const movieName = response.data;
           chrome.storage.local.get(movieName).then((results) => {
             if (results[movieName]) {
-              console.log(results.key);
               movieDetails = results[movieName];
+              addHistory(movieName);
             } else {
               console.log("No Response");
               // fetchMovieDetails(response.data);
@@ -39,18 +39,20 @@ function fetchMovieDetails(movieName) {
     .then((data) => {
       const movie = data.results[0];
       if (movie) {
-        movieDetails = {
-          title: movie.original_title,
-          release_date: movie.release_date,
-          overview: movie.overview,
-          poster_path: movie.poster_path,
-          popularity: movie.popularity,
-        };
-        chrome.storage.local.set({ [movieName]: movieDetails });
+        movieDetails = movie;
+        chrome.storage.local.set({ [movieName]: movie });
         console.log("Movie " + movieName + " is added to the list...");
-        chrome.tabs.sendMessage(tabId, { message: "new_movie_added" });
+        addHistory(movieName);
       }
     });
+}
+function addHistory(movieName){
+  chrome.storage.local.get({ movie_search_history: [] }, (result) => {
+    const movie_search_history = result.movie_search_history;
+    console.log(movie_search_history);
+    movie_search_history.push({ movieName, searchDate: new Date().toDateString() });
+    chrome.storage.local.set({ movie_search_history });
+  });
 }
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   console.log("A message recieved");
