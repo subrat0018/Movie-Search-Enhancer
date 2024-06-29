@@ -16,7 +16,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
               addHistory(movieName);
             } else {
               console.log("No Response");
-              // fetchMovieDetails(response.data);
+              // fetchMovieDetails(movieName);
             }
           });
         } else {
