@@ -15,8 +15,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
               movieDetails = results[movieName];
               addHistory(movieName);
             } else {
-              console.log("No Response");
-              // fetchMovieDetails(movieName);
+              fetchMovieDetails(movieName);
             }
           });
         }
@@ -37,9 +36,10 @@ function fetchMovieDetails(movieName) {
       const movie = data.results[0];
       if (movie) {
         movieDetails = movie;
-        chrome.storage.local.set({ [movieName]: movie });
+        chrome.storage.local.set({ [movie.title]: movie });
         console.log("Movie " + movieName + " is added to the list...");
-        addHistory(movieName);
+        console.log(movie.title);
+        addHistory(movie.title);
       }
     });
 }

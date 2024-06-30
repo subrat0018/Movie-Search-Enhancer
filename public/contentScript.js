@@ -1,20 +1,23 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.message === "parse_movie_title") {
       let movieName = null;
-  
-      const selectors = [
-        ".B5dxMb",      //Google suggested
-        ".DKV0Md",      //Wikipedia     
-        ".MBeuO",       //IMDB and general search results heading                   
-      ];
-  
-      for (let selector of selectors) {
-        const element = document.querySelector(selector);
-        if (element && element.innerText) {
-          movieName = element.innerText.split(" ")[0];
-          break;
+      //First get any wiki or imdb page result
+      const elements = document.getElementsByTagName("a");
+      for(let i=0;i<elements.length;i++){
+        if(elements[i].href.includes("wiki") || elements[i].href.includes("imdb")){
+          let text = elements[i].children[1]?.innerHTML.split(" ")[0];
+          if(text){
+            movieName = text;
+            break;
+          }
         }
       }
+      //Check if google has suggested the movie title
+      let text = document.querySelector(".B5dxMb")?.innerHTML;
+      if(text){
+        movieName = text;
+      }
+      console.log(movieName);
       if (movieName) {
         sendResponse({ data: movieName });
       } else {

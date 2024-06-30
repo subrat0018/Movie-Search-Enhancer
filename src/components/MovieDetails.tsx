@@ -5,10 +5,10 @@ const MovieDetails = () => {
   const baseImgUrl = "https://image.tmdb.org/t/p/original";
   const movie = useSelector((state: RootState) => state.movie.movie);
   return (
-    <div className="flex space-x-4 h-1/2">
+    <div className="flex space-x-4">
       <div className="p-3 w-1/2">
         <img
-          className=" shadow-lg shadow-white"
+          className=" shadow-lg shadow-white h-80"
           src={baseImgUrl + movie?.poster_path}
           alt={movie?.title + " Image"}
         />

@@ -55,6 +55,9 @@ const HistoryTable = () => {
                     onClick={(e)=>{
                       e.preventDefault();
                       chrome.storage.local.get(items.movie_name).then((results)=>{
+                        console.log(results);
+                        console.log(items.movie_name);
+                        console.log(results[items.movie_name]);
                         if (results[items.movie_name]) {
                           const movieDetails = results[items.movie_name];
                           dispatch(setMovie(movieDetails));
