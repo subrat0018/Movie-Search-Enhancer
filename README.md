@@ -1,46 +1,28 @@
-# Getting Started with Create React App
+# Movie Search Enhancer Chrome Extension
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Enhances Google search results for movies by parsing titles and fetching details from TMDB API. Stores a searchable history of all movie queries.
 
-## Available Scripts
+## Install Chrome Extension
 
-In the project directory, you can run:
+1. Download `.zip` and extract or clone the repository
+1. Navigate to the project directory ` cd Movie-Search-Enhancer`
+1. Install all the dependencies ` npm i`
+1. Build the project ` npm run build`
+1. Visit `chrome://extensions` in Google Chrome
+1. Enable Developer mode by ticking the toggle in the upper-right corner
+1. Click on the "Load unpacked ..." button
+1. Select the _build_ folder from this project
 
-### `npm start`
+## Use Movie Search Enhancer Extension
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Perform a Google search about a movie in [Google](https://www.google.com/) and wait for the browser to completely load
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Perform a google search in google and wait for the browser to completely load](https://res.cloudinary.com/dddvy7tax/image/upload/v1719750373/use1_ebpzj0.png)
 
-### `npm test`
+### Click on The extension icon to get the details about movie 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Click on the extension icon](https://res.cloudinary.com/dddvy7tax/image/upload/v1719750384/use2_idnbsb.png)
 
-### `npm run build`
+#### Build your search history, Click on the view button to get the movie details immediately
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Perform many similar searches to build your search history](https://res.cloudinary.com/dddvy7tax/image/upload/v1719750375/use3_nk7mna.png)
