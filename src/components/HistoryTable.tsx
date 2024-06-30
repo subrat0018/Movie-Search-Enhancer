@@ -1,14 +1,24 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-
+import { setMovie } from "../redux/movieSlice";
+import { setHistory } from "../redux/historySlice";
 
 const HistoryTable = () => {
   const searchHistory = useSelector((state: RootState)=>state.history.history);
+  const dispatch = useDispatch();
   return (
     <div>
-      <p className="text-white m-6 text-lg">Search History</p>
-      <div className="relative shadow-md sm:rounded-lg m-6 overflow-y-scroll h-44">
+      <div className="flex justify-between">
+      <p className="text-white m-3 text-lg">Search History</p>
+      <p className=" text-red-500 m-3 text-lg cursor-pointer" onClick={()=>{
+        chrome.storage.local.remove("movie_search_history").then((res)=>{
+          console.log("removed Successfully");
+        })
+        dispatch(setHistory([]));
+      }}>clear🗑️</p>
+      </div>
+      <div className="relative shadow-md sm:rounded-lg m-3 overflow-y-scroll h-44">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 h-44">
           <thead className="text-xs  uppercase  bg-gray-700 text-gray-400">
             <tr>
@@ -42,6 +52,17 @@ const HistoryTable = () => {
                   <a
                     href="#"
                     className="font-medium  text-blue-500 hover:underline"
+                    onClick={(e)=>{
+                      e.preventDefault();
+                      chrome.storage.local.get(items.movie_name).then((results)=>{
+                        if (results[items.movie_name]) {
+                          const movieDetails = results[items.movie_name];
+                          dispatch(setMovie(movieDetails));
+                        } else {
+                          console.log("Some Error Ocurred");
+                        }
+                      })
+                    }}
                   >
                     view
                   </a>

@@ -19,14 +19,11 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
               // fetchMovieDetails(movieName);
             }
           });
-        } else {
-          console.log(response?.error);
-          movieDetails = null;
         }
       }
     );
-  } else {
-    movieDetails = null;
+  }else{
+    movieDetails=null;
   }
 });
 
@@ -49,8 +46,7 @@ function fetchMovieDetails(movieName) {
 function addHistory(movieName){
   chrome.storage.local.get({ movie_search_history: [] }, (result) => {
     const movie_search_history = result.movie_search_history;
-    console.log(movie_search_history);
-    movie_search_history.push({ movieName, searchDate: new Date().toDateString() });
+    movie_search_history.push({ movie_name: movieName, search_date: new Date().toDateString() });
     chrome.storage.local.set({ movie_search_history });
   });
 }
