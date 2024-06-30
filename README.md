@@ -4,7 +4,7 @@ Enhances Google search results for movies by parsing titles and fetching details
 
 ## Install Chrome Extension
 
-1. Download `.zip` and extract or clone the repository
+1. Download `.zip` and extract or clone the repository ` git clone https://github.com/subrat0018/Movie-Search-Enhancer.git`
 1. Navigate to the project directory ` cd Movie-Search-Enhancer`
 1. Install all the dependencies ` npm i`
 1. Build the project ` npm run build`
@@ -12,6 +12,7 @@ Enhances Google search results for movies by parsing titles and fetching details
 1. Enable Developer mode by ticking the toggle in the upper-right corner
 1. Click on the "Load unpacked ..." button
 1. Select the _build_ folder from this project
+1. Pin the Movie Search Enhancer extension
 
 ## Use Movie Search Enhancer Extension
 
