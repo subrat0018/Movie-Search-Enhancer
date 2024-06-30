@@ -1,12 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
-const searchHistory = [
-  { movieName: "Batman Begins", searchDate: "Sat Jun 29 2024" },
-  { movieName: "Batman Begins", searchDate: "Sat Jun 29 2024" },
-  { movieName: "Batman Begins", searchDate: "Sat Jun 29 2024" },
-  { movieName: "Batman Begins", searchDate: "Sat Jun 29 2024" },
-];
+
 const HistoryTable = () => {
+  const searchHistory = useSelector((state: RootState)=>state.history.history);
   return (
     <div>
       <p className="text-white m-6 text-lg">Search History</p>
@@ -26,19 +24,19 @@ const HistoryTable = () => {
             </tr>
           </thead>
           <tbody>
-            {searchHistory.map((items) => (
-              <tr className="odd:bg-gray-900 even:bg-gray-800  border-gray-700">
+            {searchHistory.map((items, index) => (
+              <tr key={index} className="odd:bg-gray-900 even:bg-gray-800  border-gray-700">
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium whitespace-nowrap text-white"
                 >
-                  {items.movieName}
+                  {items.movie_name}
                 </th>
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium  whitespace-nowrap text-white"
                 >
-                  {items.searchDate}
+                  {items.search_date}
                 </th>
                 <td className="px-6 py-4">
                   <a

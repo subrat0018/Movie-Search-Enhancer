@@ -1,19 +1,9 @@
-import React from "react";
 import genre from "../data/data.js"
-const Movie = () => {
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store.js";
+const MovieDetails = () => {
   const baseImgUrl = "https://image.tmdb.org/t/p/original";
-  const movie = {
-    title: "Batman Begins",
-    release_date: "2005-06-10",
-    overview:
-      "Driven by tragedy, billionaire Bruce Wayne dedicates his life to uncovering and defeating the corruption that plagues his home, Gotham City. Unable to work within the system, he instead creates a new identity, a symbol of fear for the criminal underworld - The Batman",
-    poster_path: "/4MpN4kIEqUjW8OPtOQJXlTdHiJV.jpg",
-    popularity: 91.778,
-    genre_ids: [
-      28,
-      878
-      ]
-  };
+  const movie = useSelector((state: RootState)=>state.movie.movie);
   return (
     <div className="flex space-x-4">
       <div className="p-6">
@@ -34,7 +24,7 @@ const Movie = () => {
             <div className="flex-col space-y-2">
                 <p className="text-sm text-white">{movie?.release_date}</p>
                 <p className="text-sm text-white">{movie?.popularity} 🔥</p>
-                <ul className="flex space-x-1">{movie?.genre_ids.map((item, index)=><li className="text-white text-sm">{genre[item as keyof typeof genre]}{index === movie?.genre_ids.length-1?"":","}</li>)}</ul>
+                <ul className="flex space-x-1">{movie?.genre_ids.map((item, index)=><li key={index} className="text-white text-sm">{genre[item as keyof typeof genre]}{index === movie?.genre_ids.length-1?"":","}</li>)}</ul>
             </div>
         </div>
       </div>
@@ -42,4 +32,4 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+export default MovieDetails;
